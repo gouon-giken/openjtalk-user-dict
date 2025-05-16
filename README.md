@@ -1,0 +1,1 @@
+# openjtalk-user-dict
