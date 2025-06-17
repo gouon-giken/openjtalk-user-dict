@@ -1,0 +1,2 @@
+pyopenjtalk-mod
+tqdm
