@@ -24,40 +24,44 @@ def is_csv_file(file: Path) -> bool:
     supported_extensions = [".csv"]
     return file.suffix.lower() in supported_extensions
 
+def main():
 
-input_dir_path = Path("build")
-csv_files = [file for file in input_dir_path.rglob("*") if is_csv_file(file)]
+    input_dir_path = Path("build")
+    csv_files = [file for file in input_dir_path.rglob("*") if is_csv_file(file)]
 
-for file in csv_files:
-    data_list = file.read_text(encoding="utf-8").split("\n")
-    data_list.sort(reverse=True)
+    for file in csv_files:
+        data_list = file.read_text(encoding="utf-8").split("\n")
+        data_list.sort(reverse=True)
 
-    bak_line = "<dummy>"
-    bak_cost = "0"
-    # 最初の一文字目はスキップ
-    skip = True
-    out = []
-    for line in tqdm(data_list):
-        split_line = line.split(",", 4)
-        if len(split_line[0]) >= 2 and len(bak_line) >= 2:
-            # 先頭一致
-            if bak_line.find(split_line[0]) != -1:
-                # 完全一致は除外
-                if bak_line != split_line[0]:
-                    # 分割するのは使うとこまでじゃないと多分遅くなる
+        bak_line = "<dummy>"
+        bak_cost = "0"
+        # 最初の一文字目はスキップ
+        skip = True
+        out = []
+        for line in tqdm(data_list):
+            split_line = line.split(",", 4)
+            if len(split_line[0]) >= 2 and len(bak_line) >= 2:
+                # 先頭一致
+                if bak_line.find(split_line[0]) != -1:
+                    # 完全一致は除外
+                    if bak_line != split_line[0]:
+                        # 分割するのは使うとこまでじゃないと多分遅くなる
 
-                    split_line = split_line[:3] + [str(int(bak_cost) + 500)] + [split_line[4]]
+                        split_line = split_line[:3] + [str(int(bak_cost) + 500)] + [split_line[4]]
+                        line = ",".join(split_line)
+                    else:
+                        continue
+                if len(split_line[0]) == 2:
+                    split_line = split_line[:3] + ["10000"] + [split_line[4]]
                     line = ",".join(split_line)
-                else:
-                    continue
-            if len(split_line[0]) == 2:
-                split_line = split_line[:3] + ["10000"] + [split_line[4]]
-                line = ",".join(split_line)
 
-        bak_line = split_line[0]
-        bak_cost = split_line[3]
+            bak_line = split_line[0]
+            bak_cost = split_line[3]
 
-        line = ",".join(split_line)
-        out.append(line)
+            line = ",".join(split_line)
+            out.append(line)
 
-    file.write_text("\n".join(out), encoding="utf-8")
+        file.write_text("\n".join(out), encoding="utf-8")
+
+if __name__ == "__main__":
+    main()
