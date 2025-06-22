@@ -14,7 +14,7 @@ openjtalk用の辞書置き場です
 日本語最大規模の形態素解析機向け医療用語辞書  
 日本語最大規模の形態素解析機向け人名辞書  
 
-src以下フォルダの説明  
+#### src以下フォルダの説明  
 csv_1gram 漢字1gram（1文字）の辞書  
 csv_2gram 漢字1gram（2文字）の辞書  
 csv_3gram 漢字1gram（3文字）の辞書  
@@ -22,6 +22,7 @@ csv_eigo アルファベットのみでできた単語の辞書
 csv_name 人名辞書  
 csv_medical 医療用辞書  
 
+#### 使い方
 ```
 # 仮想環境の作成
 task run install
