@@ -16,11 +16,17 @@ openjtalk用の辞書置き場です
 
 #### src以下フォルダの説明  
 csv_1gram 漢字1gram（1文字）の辞書  
-csv_2gram 漢字1gram（2文字）の辞書  
-csv_3gram 漢字1gram（3文字）の辞書  
+csv_2gram 漢字2gram（2文字）の辞書  
+csv_3gram 漢字3gram（3文字）の辞書  
+csv_4_5gram 漢字4-5gram（4-5文字）の辞書  
+csv_ngram 漢字6-ngram（6-n文字）の辞書  
+csv_hiragana すべてひらがなでできた単語の辞書  
+csv_katakana すべてカタカナでできた単語の辞書  
 csv_eigo アルファベットのみでできた単語の辞書  
 csv_name 人名辞書  
 csv_medical 医療用辞書  
+csv_game ゲーム用語辞書  
+csv_history　歴史用語に関連する辞書  
 
 #### 使い方
 ```
