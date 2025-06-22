@@ -26,5 +26,5 @@ csv_name 人名辞書
 task run install
 
 # pyopenjtalk ユーザー辞書をビルド
-# task run build_dictionary
+task run build_dictionary
 ```
