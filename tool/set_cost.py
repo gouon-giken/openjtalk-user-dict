@@ -26,7 +26,7 @@ def is_csv_file(file: Path) -> bool:
 
 def main():
 
-    input_dir_path = Path("build")
+    input_dir_path = Path("src/csv_name")
     csv_files = [file for file in input_dir_path.rglob("*") if is_csv_file(file)]
 
     for file in csv_files:
