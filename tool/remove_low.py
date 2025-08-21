@@ -21,6 +21,9 @@ def main():
             if len(split_line) == 15:
                 data_list.append(line)
 
+            elif len(split_line) < 15:
+                continue
+            
             else:
                 cur_line = ",".join( split_line[:15] )
                 data_list.append(cur_line)
