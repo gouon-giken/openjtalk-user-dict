@@ -18,12 +18,21 @@ def main():
         for line in tqdm(text_list):
             split_line = line.split(",")
 
+            if split_line[3] == "":
+                new_split_line = split_line[:3] + ["8000"] + split_line[4:]
+                split_line = new_split_line
+
+                line = ",".join(split_line)
+                
+                print(split_line[0])
+
+
             if len(split_line) == 15:
                 data_list.append(line)
 
             elif len(split_line) < 15:
                 continue
-            
+
             else:
                 cur_line = ",".join( split_line[:15] )
                 data_list.append(cur_line)
