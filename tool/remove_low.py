@@ -35,6 +35,7 @@ def main():
             split_line = line.split(",")
 
             pron = split_line[12]
+            """
             mora = pron
             
             for i in komoji_list:
@@ -57,6 +58,15 @@ def main():
 
                 split_line = split_line[:13] + [mora_acc, split_line[14] ]
                 line = ",".join(split_line)
+            """            
+            mora_acc = split_line[13]
+            mora_acc_split = mora_acc.split("/")
+
+            mora_acc = f"{mora_acc_split[0]}/*" 
+
+            split_line = split_line[:13] + [mora_acc, split_line[14] ]
+            line = ",".join(split_line)
+
 
             if "　" in pron and KANA_PATTERN.fullmatch(pron):
                 
